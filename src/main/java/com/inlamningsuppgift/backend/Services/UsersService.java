@@ -11,8 +11,7 @@ import java.util.List;
 public class UsersService {
 
     @Autowired
-    UsersRepository usersRepository;
-
+    private UsersRepository usersRepository;
 
     public Users createUsers(Users users) {
         return usersRepository.save(users);

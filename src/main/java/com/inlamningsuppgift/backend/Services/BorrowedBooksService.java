@@ -1,8 +1,10 @@
 package com.inlamningsuppgift.backend.Services;
 
 import com.inlamningsuppgift.backend.Repository.BorrowedBooksRepository;
+import com.inlamningsuppgift.backend.Repository.UsersRepository;
 import com.inlamningsuppgift.backend.models.Books;
 import com.inlamningsuppgift.backend.models.BorrowedBooks;
+import com.inlamningsuppgift.backend.models.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +13,9 @@ import java.util.List;
 
 @Service
 public class BorrowedBooksService {
+
+    @Autowired
+    private UsersService usersService;
 
     @Autowired
     BorrowedBooksRepository borrowedBooksRepository;

@@ -1,27 +1,17 @@
 package com.inlamningsuppgift.backend.Controllers;
-
 import com.inlamningsuppgift.backend.Services.BorrowedBooksService;
 import com.inlamningsuppgift.backend.models.BorrowedBooks;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/borrowedBooks")
+@RequestMapping(value = "/api")
 public class BorrowedBooksController {
 
     @Autowired
     BorrowedBooksService borrowedBooksService;
-
-
-    //POST-endpoint
-    @PostMapping
-    public ResponseEntity<BorrowedBooks> addBorrowedBooks(@Valid @RequestBody BorrowedBooks borrowedBooks) {
-
-    }
 
     @PostMapping("/addBorrowedBook")
     public BorrowedBooks createBorrowedBooks(@RequestBody BorrowedBooks borrowedBooks) {

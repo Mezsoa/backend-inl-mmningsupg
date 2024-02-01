@@ -20,8 +20,9 @@ public class Users {
     private String[] address;
     @CreatedDate
     private Date created_at;
-    @DBRef
-    private List<BorrowedBooks> borrowedBooks;
+
+    public Users() {
+    }
 
     public String getId() {
         return id;
