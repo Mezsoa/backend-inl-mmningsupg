@@ -5,3 +5,6 @@
 3.Start IntelliJ. head to terminal and git clone https://github.com/Mezsoa/backend-inl-mmningsupg.git
 
 4.Press Run Springboot: BackendApplication
+
+
+// had to make a new repo due to issues with the old one, thats why i dont have any commits.
