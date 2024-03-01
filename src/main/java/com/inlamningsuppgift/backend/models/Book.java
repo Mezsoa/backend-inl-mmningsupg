@@ -1,22 +1,31 @@
 package com.inlamningsuppgift.backend.models;
 
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
-@Document(collection = "books")
-public class Books {
+@Document(collection = "Book")
+public class Book {
+
     @Id
     private String id;
+    @NotBlank
     private String title;
+
     private String[] genres;
+    @NotBlank
     private String[] author;
+
     private String bookDescription;
     private String publishedYear;
     @CreatedDate
     private Date created_at;
+
+    public Book() {
+    }
 
 
     public String getId() {
@@ -45,5 +54,33 @@ public class Books {
 
     public Date getCreated_at() {
         return created_at;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setAuthor(String[] author) {
+        this.author = author;
+    }
+
+    public void setBookDescription(String bookDescription) {
+        this.bookDescription = bookDescription;
+    }
+
+    public void setPublishedYear(String publishedYear) {
+        this.publishedYear = publishedYear;
+    }
+
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setGenres(String[] genres) {
+        this.genres = genres;
     }
 }
