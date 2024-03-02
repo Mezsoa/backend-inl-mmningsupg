@@ -1,4 +1,4 @@
-package com.inlamningsuppgift.backend.dto;
+package com.inlamningsuppgift.backend.dto.BorrowedBook;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.mongodb.core.mapping.DBRef;

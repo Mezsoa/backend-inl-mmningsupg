@@ -12,10 +12,7 @@ public class BookService {
     BookRepository bookRepository;
 
 
-    public Book createBook(Book book) {
 
-        return bookRepository.save(book);
-    }
 
 
 

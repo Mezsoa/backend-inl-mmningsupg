@@ -12,14 +12,15 @@ public class User {
 
     @Id
     private String id;
-    @NotBlank
+    @NotBlank(message = "userName cannot be blank")
     private String userName;
-    @NotBlank
+    @NotBlank(message = "password cannot be blank")
     private String password;
-    @NotBlank
+    @NotBlank(message = "dateOfBirth cannot be blank")
     private String dateOfBirth;
-    @NotBlank
+    @NotBlank(message = "email cannot be blank")
     private String email;
+    @NotBlank(message = "address cannot be blank")
     private String[] address;
     @CreatedDate
     private Date created_at;
