@@ -1,12 +1,13 @@
 package com.inlamningsuppgift.backend.Services;
 
 import com.inlamningsuppgift.backend.Repository.UserRepository;
-import com.inlamningsuppgift.backend.Repository.UsersRepository;
 import com.inlamningsuppgift.backend.dto.User.UpdateOneUserDTO;
 import com.inlamningsuppgift.backend.dto.User.UserCreationDTO;
+import com.inlamningsuppgift.backend.dto.User.UserDeleteDTO;
 import com.inlamningsuppgift.backend.dto.User.UserFoundByIdDTO;
 import com.inlamningsuppgift.backend.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UsersService {
+public class UserService {
 
     @Autowired
     private UserRepository userRepository;
@@ -22,7 +23,7 @@ public class UsersService {
 
 
 
-    public User createUser(UserCreationDTO userCreationDTO) {
+    public ResponseEntity<?> createUser(UserCreationDTO userCreationDTO) {
         User newUser = new User();
             newUser.setUserName(userCreationDTO.getUserName());
             newUser.setPassword(userCreationDTO.getPassword());
@@ -31,7 +32,7 @@ public class UsersService {
             newUser.setAddress(userCreationDTO.getAddress());
             newUser.setCreated_at(userCreationDTO.getCreated_at());
 
-            return userRepository.save(newUser);
+            return ResponseEntity.ok(userRepository.save(newUser));
     }
 
     public List<User> getAllUsers() {
@@ -64,7 +65,13 @@ public class UsersService {
                 }).orElseThrow(() -> new RuntimeException("User was not found"));
     }
 
-    public ResponseEntity<?> deleteUser()
+    public ResponseEntity<?> deleteUser(UserDeleteDTO userDeleteDTO) {
+        userRepository.findById(userDeleteDTO.getUserId())
+                .orElseThrow(() -> new RuntimeException("User was not found"));
+        userRepository.findById(userDeleteDTO.getUserId());
+        return ResponseEntity.status(HttpStatus.OK).body("User was deleted successfully!");
+    }
+
 
 
 

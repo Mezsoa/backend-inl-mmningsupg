@@ -53,13 +53,13 @@ public class BorrowedBookService {
     public BorrowedBook updateBorrowedBook(UpdateOneBorrowedBookDTO updateOneBorrowedBookDTO) {
         return borrowedBookRepository.findById(updateOneBorrowedBookDTO.getBorrowedBookId())
                 .map(existingBorrowedBook -> {
-                    if (updateOneBorrowedBookDTO.getUserId() != null) {
-                        existingBorrowedBook.setUser(updateOneBorrowedBookDTO.getUserId());
+                    if (updateOneBorrowedBookDTO.getBorrowedBookId() != null) {
+                        existingBorrowedBook.setId(updateOneBorrowedBookDTO.getBorrowedBookId());
                     }
-                    if (updateBorrowedBook.getBook() != null) {
-                        existingBorrowedBook.setBook(updateBorrowedBook.getBook());
+                    if (updateOneBorrowedBookDTO.getBorrowedDate() != null) {
+                        existingBorrowedBook.setBorrowedDate(updateOneBorrowedBookDTO.getBorrowedDate());
                     }
-                    return borrowedBookRepository.save(updateBorrowedBook);
+                    return borrowedBookRepository.save(existingBorrowedBook);
                 }).orElseThrow(() -> new RuntimeException("BorrowedBook was not found with the given ID"));
     }
 
