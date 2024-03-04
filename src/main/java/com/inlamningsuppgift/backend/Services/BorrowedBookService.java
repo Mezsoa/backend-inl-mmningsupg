@@ -71,7 +71,7 @@ public ResponseEntity<?> deleteBorrowedBook(BorrowedBookDeleteDTO borrowedBookDe
                 .orElseThrow(() -> new RuntimeException("BorrowedBook does not exist"));
 
         borrowedBookRepository.deleteById(borrowedBookDeleteDTO.getBorrowedBookId());
-        return ResponseEntity.status(HttpStatus.OK).body("BorrowedBook was deleted successfully!")
+        return ResponseEntity.status(HttpStatus.OK).body("BorrowedBook was deleted successfully!");
         }
 
 

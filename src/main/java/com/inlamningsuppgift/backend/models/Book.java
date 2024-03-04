@@ -12,14 +12,15 @@ public class Book {
 
     @Id
     private String id;
-    @NotBlank
+    @NotBlank(message = "Title cannot be blank")
     private String title;
-
+    @NotBlank(message = "Genres cannot be blank")
     private String[] genres;
-    @NotBlank
+    @NotBlank(message = "Author cannot be blank")
     private String[] author;
-
+    @NotBlank(message = "BookDescription cannot be blank")
     private String bookDescription;
+    @NotBlank(message = "PublishedYear cannot be blank")
     private String publishedYear;
     @CreatedDate
     private Date created_at;
