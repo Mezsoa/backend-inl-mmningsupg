@@ -28,7 +28,7 @@ public class BorrowedBookService {
     @Autowired
     UserRepository userRepository;
 
-    public BorrowedBook createBorrowedBook(BorrowedBookDTO borrowedBookDTO) {
+    public ResponseEntity<?> createBorrowedBook(BorrowedBookDTO borrowedBookDTO) {
         User findUser = userRepository.findById(borrowedBookDTO.getUserId())
                 .orElseThrow(() -> new RuntimeException("User was not found"));
         Book findBook = bookRepository.findById(borrowedBookDTO.getBookId())
@@ -40,7 +40,7 @@ public class BorrowedBookService {
                 newBorrowedBook.setBorrowedDate(borrowedBookDTO.getBorrowedDate());
                 newBorrowedBook.setDueDate(borrowedBookDTO.getDueDate());
 
-                return borrowedBookRepository.save(newBorrowedBook);
+                return ResponseEntity.ok(borrowedBookRepository.save(newBorrowedBook));
     }
 
 
