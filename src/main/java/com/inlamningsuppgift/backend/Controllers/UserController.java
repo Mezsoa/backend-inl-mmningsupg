@@ -29,26 +29,25 @@ public ResponseEntity<?> createUser(@Valid @RequestBody UserCreationDTO userCrea
     return userService.createUser(userCreationDTO);
 }
 
-
-
 // Get all Users
 @GetMapping("/find/all")
 public ResponseEntity<?> findAllUsers() {
     return ResponseEntity.ok(userService.getAllUsers());
 }
 
-
+//Find one specific User by id
 @GetMapping("/find")
 public Optional<User> findOneUser(@Valid @RequestBody UserFoundByIdDTO userFoundByIdDTO) {
     return userService.getOneUser(userFoundByIdDTO);
 }
 
-
+//Update one User by id
 @PutMapping("/update")
 public User updateOneUser(@Valid @RequestBody UpdateOneUserDTO updateOneUserDTO) {
     return userService.updateUser(updateOneUserDTO);
 }
 
+//Delete one specific User by id
 @DeleteMapping("/delete")
     public ResponseEntity<?> deleteUser(@Valid @RequestBody UserDeleteDTO userDeleteDTO) {
     return userService.deleteUser(userDeleteDTO);

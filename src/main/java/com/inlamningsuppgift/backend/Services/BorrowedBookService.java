@@ -4,12 +4,15 @@ import com.inlamningsuppgift.backend.Repository.BookRepository;
 import com.inlamningsuppgift.backend.Repository.BorrowedBookRepository;
 import com.inlamningsuppgift.backend.Repository.UserRepository;
 import com.inlamningsuppgift.backend.dto.BorrowedBook.BorrowedBookDTO;
+import com.inlamningsuppgift.backend.dto.BorrowedBook.BorrowedBookDeleteDTO;
 import com.inlamningsuppgift.backend.dto.BorrowedBook.BorrowedBookFoundByIdDTO;
 import com.inlamningsuppgift.backend.dto.BorrowedBook.UpdateOneBorrowedBookDTO;
 import com.inlamningsuppgift.backend.models.Book;
 import com.inlamningsuppgift.backend.models.BorrowedBook;
 import com.inlamningsuppgift.backend.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -63,9 +66,13 @@ public class BorrowedBookService {
                 }).orElseThrow(() -> new RuntimeException("BorrowedBook was not found with the given ID"));
     }
 
+public ResponseEntity<?> deleteBorrowedBook(BorrowedBookDeleteDTO borrowedBookDeleteDTO) {
+        borrowedBookRepository.findById(borrowedBookDeleteDTO.getBorrowedBookId())
+                .orElseThrow(() -> new RuntimeException("BorrowedBook does not exist"));
 
-    public String deleteBorrowedBook(String id) {
-        borrowedBookRepository.deleteById(id);
-        return "BorrowedBook was deleted successfully";
-    }
+        borrowedBookRepository.deleteById(borrowedBookDeleteDTO.getBorrowedBookId());
+        return ResponseEntity.status(HttpStatus.OK).body("BorrowedBook was deleted successfully!")
+        }
+
+
 }

@@ -1,17 +1,19 @@
 package com.inlamningsuppgift.backend.dto.BorrowedBook;
 
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.time.LocalDate;
 
 public class BorrowedBookDTO {
-
+    @NotBlank(message = "User Id cannot be blank")
     private String userId;
-
+    @NotBlank(message = "Book Id cannot be blank")
     private String bookId;
     @CreatedDate
     private LocalDate borrowedDate;
+    @NotBlank(message = "DueDate cannot be blank")
     private String dueDate;
 
 

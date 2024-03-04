@@ -11,6 +11,7 @@ public class UpdateOneBorrowedBookDTO {
     private String borrowedBookId;
     @CreatedDate
     private LocalDate borrowedDate;
+    @NotBlank(message = "DueDate cannot be blank")
     private String dueDate;
 
     public String getBorrowedBookId() {
