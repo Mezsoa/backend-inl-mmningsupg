@@ -1,6 +1,7 @@
 package com.inlamningsuppgift.backend.dto.Book;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.util.Date;
@@ -9,16 +10,16 @@ public class BookCreationDTO {
 
     @NotBlank(message = "Title cannot be blank")
     private String title;
-    @NotBlank(message = "Genres cannot be blank")
+    @NotEmpty(message = "Genres cannot be null nor size zero")
     private String[] genres;
-    @NotBlank(message = "Author cannot be blank")
+    @NotEmpty(message = "Author cannot be null nor size zero")
     private String[] author;
     @NotBlank(message = "BookDescription cannot be blank")
     private String bookDescription;
     @NotBlank(message = "PublishedYear cannot be blank")
     private String publishedYear;
     @CreatedDate
-    private Date created_at;
+    private Date createdAt = new Date();
 
 
     public String getTitle() {
@@ -61,11 +62,12 @@ public class BookCreationDTO {
         this.publishedYear = publishedYear;
     }
 
-    public Date getCreated_at() {
-        return created_at;
+
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 }

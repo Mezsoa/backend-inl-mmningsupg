@@ -1,8 +1,10 @@
 package com.inlamningsuppgift.backend.dto.User;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.annotation.CreatedDate;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class UserCreationDTO {
@@ -15,10 +17,17 @@ public class UserCreationDTO {
     private String dateOfBirth;
     @NotBlank(message = "email cannot be blank")
     private String email;
-    @NotBlank(message = "address cannot be blank")
+    @NotNull(message = "address cannot be null nor size zero")
     private String[] address;
     @CreatedDate
-    private Date created_at;
+    private Date createdAt = new Date();
+
+
+
+
+
+
+
 
     public String getUserName() {
         return userName;
@@ -60,11 +69,12 @@ public class UserCreationDTO {
         this.address = address;
     }
 
-    public Date getCreated_at() {
-        return created_at;
+
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 }

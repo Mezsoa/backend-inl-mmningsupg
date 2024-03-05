@@ -23,7 +23,7 @@ public class Book {
     @NotBlank(message = "PublishedYear cannot be blank")
     private String publishedYear;
     @CreatedDate
-    private Date created_at;
+    private Date createdAt;
 
     public Book() {
     }
@@ -53,8 +53,8 @@ public class Book {
         return publishedYear;
     }
 
-    public Date getCreated_at() {
-        return created_at;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
     public void setId(String id) {
@@ -73,8 +73,8 @@ public class Book {
         this.publishedYear = publishedYear;
     }
 
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public void setTitle(String title) {

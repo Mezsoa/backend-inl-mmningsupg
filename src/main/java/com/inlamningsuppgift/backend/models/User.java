@@ -1,10 +1,12 @@
 package com.inlamningsuppgift.backend.models;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Document(collection = "User")
@@ -20,10 +22,10 @@ public class User {
     private String dateOfBirth;
     @NotBlank(message = "email cannot be blank")
     private String email;
-    @NotBlank(message = "address cannot be blank")
+    @NotEmpty(message = "address cannot be null nor size  zero")
     private String[] address;
     @CreatedDate
-    private Date created_at;
+    private Date createdAt = new Date();
 
     public User() {
     }
@@ -77,12 +79,13 @@ public class User {
         this.address = address;
     }
 
-    public Date getCreated_at() {
-        return created_at;
+
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 }
 

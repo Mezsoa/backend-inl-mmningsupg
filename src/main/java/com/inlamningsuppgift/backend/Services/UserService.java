@@ -1,5 +1,6 @@
 package com.inlamningsuppgift.backend.Services;
 
+import com.inlamningsuppgift.backend.EntityNotFoundException.EntityNotFoundException;
 import com.inlamningsuppgift.backend.Repository.UserRepository;
 import com.inlamningsuppgift.backend.dto.User.UpdateOneUserDTO;
 import com.inlamningsuppgift.backend.dto.User.UserCreationDTO;
@@ -30,7 +31,7 @@ public class UserService {
             newUser.setDateOfBirth(userCreationDTO.getDateOfBirth());
             newUser.setEmail(userCreationDTO.getEmail());
             newUser.setAddress(userCreationDTO.getAddress());
-            newUser.setCreated_at(userCreationDTO.getCreated_at());
+            newUser.setCreatedAt(userCreationDTO.getCreatedAt());
 
             return ResponseEntity.ok(userRepository.save(newUser));
     }
@@ -40,6 +41,8 @@ public class UserService {
     }
 
     public Optional<User> getOneUser(UserFoundByIdDTO userFoundByIdDTO) {
+        User foundUser = userRepository.findById(userFoundByIdDTO.getUserId())
+                .orElseThrow(() -> new RuntimeException("No User matched the userId provided"));
         return userRepository.findById(userFoundByIdDTO.getUserId());
     }
 
@@ -71,38 +74,4 @@ public class UserService {
         userRepository.deleteById(userDeleteDTO.getUserId());
         return ResponseEntity.status(HttpStatus.OK).body("User was deleted successfully!");
     }
-
-
-
-
-
-
-
-
-
-//    public Users createUsers(Users users) {
-//        return usersRepository.save(users);
-//    }
-//
-//    public List<Users> getAllUsers() {
-//        return  usersRepository.findAll();
-//    }
-//
-//    public Users getOneUser(String id) {
-//        return usersRepository.findById(id).get();
-//    }
-//
-//    public Users updateUsers(String _id, Users users) {
-//        return usersRepository.save(users);
-//    }
-//
-//    public Users deleteAll() {
-//        usersRepository.deleteAll();
-//        return  null;
-//    }
-//
-//    public String deleteUser(String id) {
-//        usersRepository.deleteById(id);
-//        return "Deleted successfully";
-//    }
 }

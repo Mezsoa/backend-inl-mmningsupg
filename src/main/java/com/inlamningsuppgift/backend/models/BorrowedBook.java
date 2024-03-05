@@ -1,6 +1,6 @@
 package com.inlamningsuppgift.backend.models;
 
-import org.springframework.data.annotation.CreatedDate;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,9 +16,12 @@ public class BorrowedBook {
     private User user;
     @DBRef
     private Book book;
-    @CreatedDate
-    private LocalDate borrowedDate;
-    private String dueDate;
+
+
+    private LocalDate borrowedDate = LocalDate.now();
+    // adds 30 days to whatever date it was when borrowedDate occurred
+    private LocalDate dueDate = LocalDate.now().plusDays(30);
+
 
 
 
@@ -65,11 +68,11 @@ public class BorrowedBook {
         this.borrowedDate = borrowedDate;
     }
 
-    public String getDueDate() {
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(String dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 }

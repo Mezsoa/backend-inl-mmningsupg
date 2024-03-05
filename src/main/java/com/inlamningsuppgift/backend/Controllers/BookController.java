@@ -25,7 +25,6 @@ public class BookController {
     BookService bookService;
 
 
-
     @PostMapping("/post")
     public ResponseEntity<?> createBook(@Valid @RequestBody BookCreationDTO bookCreationDTO) {
         return bookService.createBook(bookCreationDTO);

@@ -13,6 +13,11 @@ public class UserDeleteDTO {
     @CreatedDate
     private Date userDeletedAt = new Date();
 
+
+
+
+
+
     public String getUserId() {
         return userId;
     }

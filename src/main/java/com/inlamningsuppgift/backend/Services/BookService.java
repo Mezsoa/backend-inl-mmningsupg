@@ -27,6 +27,7 @@ public class BookService {
       newBook.setAuthor(bookCreationDTO.getAuthor());
       newBook.setBookDescription(bookCreationDTO.getBookDescription());
       newBook.setPublishedYear(bookCreationDTO.getPublishedYear());
+      newBook.setCreatedAt(bookCreationDTO.getCreatedAt());
 
       return ResponseEntity.ok(bookRepository.save(newBook));
   }

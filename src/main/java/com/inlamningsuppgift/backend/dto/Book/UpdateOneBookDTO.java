@@ -1,6 +1,7 @@
 package com.inlamningsuppgift.backend.dto.Book;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 
 public class UpdateOneBookDTO {
 
@@ -9,14 +10,17 @@ public class UpdateOneBookDTO {
     private String bookId;
     @NotBlank(message = "Title cannot be blank")
     private String title;
-    @NotBlank(message = "Genres cannot be blank")
+    @NotEmpty(message = "Genres cannot be null nor size zero")
     private String[] genres;
-    @NotBlank(message = "Author cannot be blank")
+    @NotEmpty(message = "Author cannot be null nor size zero")
     private String[] author;
     @NotBlank(message = "BookDescription cannot be blank")
     private String bookDescription;
     @NotBlank(message = "PublishedYear cannot be blank")
     private String publishedYear;
+
+
+
 
     public String getTitle() {
         return title;

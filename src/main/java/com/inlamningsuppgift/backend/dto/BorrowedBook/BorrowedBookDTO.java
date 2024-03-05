@@ -5,17 +5,13 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class BorrowedBookDTO {
     @NotBlank(message = "User Id cannot be blank")
     private String userId;
     @NotBlank(message = "Book Id cannot be blank")
     private String bookId;
-    @CreatedDate
-    private LocalDate borrowedDate;
-    @NotBlank(message = "DueDate cannot be blank")
-    private String dueDate;
-
 
 
 
@@ -37,19 +33,5 @@ public class BorrowedBookDTO {
         this.bookId = bookId;
     }
 
-    public LocalDate getBorrowedDate() {
-        return borrowedDate;
-    }
 
-    public void setBorrowedDate(LocalDate borrowedDate) {
-        this.borrowedDate = borrowedDate;
-    }
-
-    public String getDueDate() {
-        return dueDate;
-    }
-
-    public void setDueDate(String dueDate) {
-        this.dueDate = dueDate;
-    }
 }

@@ -28,6 +28,10 @@ public class BorrowedBookService {
     @Autowired
     UserRepository userRepository;
 
+
+
+
+
     public ResponseEntity<?> createBorrowedBook(BorrowedBookDTO borrowedBookDTO) {
         User findUser = userRepository.findById(borrowedBookDTO.getUserId())
                 .orElseThrow(() -> new RuntimeException("User was not found"));
@@ -37,20 +41,16 @@ public class BorrowedBookService {
             BorrowedBook newBorrowedBook = new BorrowedBook();
                 newBorrowedBook.setUser(findUser);
                 newBorrowedBook.setBook(findBook);
-                newBorrowedBook.setBorrowedDate(borrowedBookDTO.getBorrowedDate());
-                newBorrowedBook.setDueDate(borrowedBookDTO.getDueDate());
-
                 return ResponseEntity.ok(borrowedBookRepository.save(newBorrowedBook));
     }
-
 
     public List<BorrowedBook> getAllBorrowedBook() {
         return borrowedBookRepository.findAll();
     }
 
-
-    public Optional<BorrowedBook> getOneBorrowedBook(BorrowedBookFoundByIdDTO borrowedBookFoundByIdDTO) {
-        return borrowedBookRepository.findById(borrowedBookFoundByIdDTO.getBorrowedBookId());
+    public BorrowedBook getOneBorrowedBook(BorrowedBookFoundByIdDTO borrowedBookFoundByIdDTO) {
+        return borrowedBookRepository.findById(borrowedBookFoundByIdDTO.getBorrowedBookId())
+                .orElseThrow(() -> new RuntimeException("No BorrowedBook matched the borrowedBookId provided"));
     }
 
     public BorrowedBook updateBorrowedBook(UpdateOneBorrowedBookDTO updateOneBorrowedBookDTO) {
@@ -59,20 +59,17 @@ public class BorrowedBookService {
                     if (updateOneBorrowedBookDTO.getBorrowedBookId() != null) {
                         existingBorrowedBook.setId(updateOneBorrowedBookDTO.getBorrowedBookId());
                     }
-                    if (updateOneBorrowedBookDTO.getBorrowedDate() != null) {
-                        existingBorrowedBook.setBorrowedDate(updateOneBorrowedBookDTO.getBorrowedDate());
+                    if (updateOneBorrowedBookDTO.getDueDate() != null) {
+                        existingBorrowedBook.setDueDate(updateOneBorrowedBookDTO.getDueDate());
                     }
                     return borrowedBookRepository.save(existingBorrowedBook);
                 }).orElseThrow(() -> new RuntimeException("BorrowedBook was not found with the given ID"));
     }
 
-public ResponseEntity<?> deleteBorrowedBook(BorrowedBookDeleteDTO borrowedBookDeleteDTO) {
+    public ResponseEntity<?> deleteBorrowedBook(BorrowedBookDeleteDTO borrowedBookDeleteDTO) {
         borrowedBookRepository.findById(borrowedBookDeleteDTO.getBorrowedBookId())
-                .orElseThrow(() -> new RuntimeException("BorrowedBook does not exist"));
-
+                        .orElseThrow(() -> new RuntimeException("BorrowedBook does not exist"));
         borrowedBookRepository.deleteById(borrowedBookDeleteDTO.getBorrowedBookId());
-        return ResponseEntity.status(HttpStatus.OK).body("BorrowedBook was deleted successfully!");
-        }
-
-
+            return ResponseEntity.status(HttpStatus.OK).body("BorrowedBook was deleted successfully!");
+    }
 }
