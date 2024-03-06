@@ -1,11 +1,7 @@
 package com.inlamningsuppgift.backend.dto.BorrowedBook;
-
 import jakarta.validation.constraints.NotBlank;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-
 import java.time.LocalDate;
-import java.util.Date;
+
 
 public class UpdateOneBorrowedBookDTO {
 

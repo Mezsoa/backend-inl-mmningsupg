@@ -1,5 +1,4 @@
 package com.inlamningsuppgift.backend.Controllers;
-
 import com.inlamningsuppgift.backend.EntityNotFoundException.EntityNotFoundException;
 import com.inlamningsuppgift.backend.Services.UserService;
 import com.inlamningsuppgift.backend.dto.User.UpdateOneUserDTO;
@@ -13,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/user")
@@ -24,11 +22,10 @@ public class UserController {
     UserService userService;
 
 
-
     // POST create a User
     @PostMapping("/post")
     public ResponseEntity<?> createUser(@Valid @RequestBody UserCreationDTO userCreationDTO) {
-            return userService.createUser(userCreationDTO);
+        return userService.createUser(userCreationDTO);
     }
 
     // Get all Users
@@ -36,14 +33,14 @@ public class UserController {
     public ResponseEntity<?> findAllUsers() {
         try {
             return ResponseEntity.ok(userService.getAllUsers());
-        }catch (EntityNotFoundException e) {
+        } catch (EntityNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
 
     //Find one specific User by id
     @GetMapping("/find")
-    public Optional<User> findOneUser(@Valid @RequestBody UserFoundByIdDTO userFoundByIdDTO) {
+    public User findOneUser(@Valid @RequestBody UserFoundByIdDTO userFoundByIdDTO) {
         return userService.getOneUser(userFoundByIdDTO);
     }
 
@@ -55,15 +52,7 @@ public class UserController {
 
     //Delete one specific User by id
     @DeleteMapping("/delete")
-        public ResponseEntity<?> deleteUser(@Valid @RequestBody UserDeleteDTO userDeleteDTO) {
-            return userService.deleteUser(userDeleteDTO);
+    public ResponseEntity<?> deleteUser(@Valid @RequestBody UserDeleteDTO userDeleteDTO) {
+        return userService.deleteUser(userDeleteDTO);
     }
-
-
-
-
-
-
-
-
 }

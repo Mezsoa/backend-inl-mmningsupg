@@ -1,5 +1,4 @@
 package com.inlamningsuppgift.backend.Controllers;
-
 import com.inlamningsuppgift.backend.EntityNotFoundException.EntityNotFoundException;
 import com.inlamningsuppgift.backend.Services.BorrowedBookService;
 import com.inlamningsuppgift.backend.dto.BorrowedBook.BorrowedBookDTO;
@@ -13,7 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/borrowedbook")
 public class BorrowedBookController {
@@ -32,7 +31,7 @@ public class BorrowedBookController {
     public ResponseEntity<?> findAllBorrowedBooks() {
         try {
             return ResponseEntity.ok(borrowedBookService.getAllBorrowedBook());
-        }catch (EntityNotFoundException e) {
+        } catch (EntityNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }

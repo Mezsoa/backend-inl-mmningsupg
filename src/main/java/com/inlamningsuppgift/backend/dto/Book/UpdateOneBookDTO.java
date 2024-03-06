@@ -1,7 +1,9 @@
 package com.inlamningsuppgift.backend.dto.Book;
-
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+
+
+
 
 public class UpdateOneBookDTO {
 
@@ -20,50 +22,49 @@ public class UpdateOneBookDTO {
     private String publishedYear;
 
 
-
-
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String[] getGenres() {
         return genres;
     }
 
-    public void setGenres(String[] genres) {
-        this.genres = genres;
+    public String getBookDescription() {
+        return bookDescription;
     }
 
     public String[] getAuthor() {
         return author;
     }
 
-    public void setAuthor(String[] author) {
-        this.author = author;
+    public String getPublishedYear() {
+        return publishedYear;
     }
 
-    public String getBookDescription() {
-        return bookDescription;
+    public String getBookId() {
+        return bookId;
+    }
+
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setGenres(String[] genres) {
+        this.genres = genres;
+    }
+
+    public void setAuthor(String[] author) {
+        this.author = author;
     }
 
     public void setBookDescription(String bookDescription) {
         this.bookDescription = bookDescription;
     }
 
-    public String getPublishedYear() {
-        return publishedYear;
-    }
-
     public void setPublishedYear(String publishedYear) {
         this.publishedYear = publishedYear;
-    }
-
-    public String getBookId() {
-        return bookId;
     }
 
     public void setBookId(String bookId) {

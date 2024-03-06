@@ -8,9 +8,6 @@ public class BorrowedBookDeleteDTO {
     private String borrowedBookId;
 
 
-
-
-
     public String getBorrowedBookId() {
         return borrowedBookId;
     }
