@@ -66,6 +66,6 @@ public class UserService {
     public ResponseEntity<?> deleteUser(UserDeleteDTO userDeleteDTO) {
         userRepository.findById(userDeleteDTO.getUserId()).orElseThrow(() -> new RuntimeException("User was not found"));
         userRepository.deleteById(userDeleteDTO.getUserId());
-        return ResponseEntity.status(HttpStatus.OK).body("User was deleted successfully!" + userDeleteDTO.getUserDeletedAt());
+        return ResponseEntity.status(HttpStatus.OK).body("User was deleted successfully!" + "\n" + userDeleteDTO.getUserDeletedAt());
     }
 }

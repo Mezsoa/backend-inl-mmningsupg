@@ -66,7 +66,7 @@ public class BookService {
     public ResponseEntity<?> deleteBook(BookDeleteDTO bookDeleteDTO) {
         bookRepository.findById(bookDeleteDTO.getBookId()).orElseThrow(() -> new RuntimeException("book was not found"));
         bookRepository.deleteById(bookDeleteDTO.getBookId());
-        return ResponseEntity.status(HttpStatus.OK).body("Book was successfully deleted!");
+        return ResponseEntity.status(HttpStatus.OK).body("Book was successfully deleted!" + "\n" + bookDeleteDTO.getBookDeletedAt());
     }
 
 }
