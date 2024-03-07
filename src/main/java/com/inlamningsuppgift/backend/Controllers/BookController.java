@@ -20,12 +20,12 @@ public class BookController {
     @Autowired
     BookService bookService;
 
-
+// create a new book
     @PostMapping("/post")
     public ResponseEntity<?> createBook(@Valid @RequestBody BookCreationDTO bookCreationDTO) {
         return bookService.createBook(bookCreationDTO);
     }
-
+// Get all books
     @GetMapping("/find/all")
     public ResponseEntity<?> findAllBooks() {
         try {
@@ -34,17 +34,17 @@ public class BookController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
-
+//Get one specific book by bookId
     @GetMapping("/find")
     public Book findOneBook(@Valid @RequestBody BookFoundByIdDTO bookFoundByIdDTO) {
         return bookService.getOneBook(bookFoundByIdDTO);
     }
-
+//Put update one specific book by bookId
     @PutMapping("/update")
     public Book updateOneBook(@Valid @RequestBody UpdateOneBookDTO updateOneBookDTO) {
         return bookService.updateBook(updateOneBookDTO);
     }
-
+// Delete a specific book by bookId
     @DeleteMapping("/delete")
     public ResponseEntity<?> deleteBook(@Valid @RequestBody BookDeleteDTO bookDeleteDTO) {
         return bookService.deleteBook(bookDeleteDTO);
